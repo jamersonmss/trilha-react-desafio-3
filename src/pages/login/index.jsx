@@ -1,3 +1,4 @@
+
 import { useNavigate  } from "react-router-dom";
 import { MdEmail, MdLock } from 'react-icons/md'
 import { Button } from '../../components/Button';
@@ -31,8 +32,18 @@ const Login = () => {
             alert('Usuário ou senha inválido')
         }catch(e){
             //TODO: HOUVE UM ERRO
+            alert('Ocorreu um erro ao tentar fazer login. Tente novamente mais tarde.');
+            console.error('Erro ao realizar login:', e);
         }
     };
+
+    const navigateToEsqueci = () => {
+        navigate('/esqueci')
+    }
+
+    const navigateToCriar = () => {
+        navigate('/cadastro')
+    }
 
     console.log('errors', errors);
 
@@ -55,8 +66,8 @@ const Login = () => {
                     <Button title="Entrar" variant="secondary" type="submit"/>
                 </form>
                 <Row>
-                    <EsqueciText>Esqueci minha senha</EsqueciText>
-                    <CriarText>Criar Conta</CriarText>
+                    <EsqueciText type="button" onClick={navigateToEsqueci}>Esqueci minha senha</EsqueciText>
+                    <CriarText type="button" onClick={navigateToCriar}>Criar Conta</CriarText>
                 </Row>
                 </Wrapper>
             </Column>
